@@ -130,7 +130,11 @@ const questions = [
 
 ```ts{4}
 import prompts from 'prompts';
-prompts.override(require('yargs').argv);
+// prompts.override(require('yargs').argv);
+prompts.override({
+  twitter: 'zqg',
+  color: ['#ff0000', '#0000ff']
+});
 (async () => {
   const response = await prompts([
     {
@@ -154,7 +158,7 @@ prompts.override(require('yargs').argv);
 ```
 5. Inject
    
-通过传递带有 答案 prompts.override 的对象来预回答问题。与过程参数结合使用时功能强大。
+以编程方式注入响应。这使您能够提前准备响应。如果找到任何注入值，则会立即使用注入值解决提示。此功能仅用于测试。
 
 ```ts{4}
 import prompts from 'prompts';
