@@ -26,9 +26,7 @@ Command And Conquer 是一个用于构建 CLI 应用程序的 JavaScript 库。
 import cac from 'cac'; 
 const cli = cac('new-cli'); 
 cli.option('--type <type>', 'Choose a project type', {
-
     default:'node'
-
 }); 
 const argv = cli.parse()
 
@@ -44,7 +42,6 @@ const cli = cac('new-cli');
 cli.option('--type <type>','Choose a project type',{
     default:'node'
 });
-
 cli.command('lint [...files]', 'Lint files').action((files, options) => {
   console.log(files, options)
 })
@@ -68,20 +65,15 @@ const argv = cli.parse()
 1. 基础用法
 ```ts{4}
 import prompts from 'prompts'; 
-
 (async () => {
   const response = await prompts({
-
     type: 'number',
     name: 'value',
     message: 'How old are you?',
     validate: value => value < 18 ? `Nightclub is 18+ only` : true
-
   }); 
-
   console.log(response); // => { value: 24 }
 })(); 
-
 ```
 2. Prompt Chain
 
@@ -115,7 +107,6 @@ const questions = [
 
 ```ts{4}
 import prompts from 'prompts';
-
 const questions = [
   {
     type: 'text',
@@ -128,11 +119,9 @@ const questions = [
     message: 'Name a topping'
   }
 ];
-
 (async () => {
   const response = await prompts(questions);
 })();
-
 ```
 
 4. Override
@@ -141,9 +130,7 @@ const questions = [
 
 ```ts{4}
 import prompts from 'prompts';
-
 prompts.override(require('yargs').argv);
-
 (async () => {
   const response = await prompts([
     {
@@ -162,10 +149,8 @@ prompts.override(require('yargs').argv);
       ],
     }
   ]);
-
   console.log(response);
 })();
-
 ```
 5. Inject
    
@@ -173,9 +158,7 @@ prompts.override(require('yargs').argv);
 
 ```ts{4}
 import prompts from 'prompts';
-
 prompts.inject([ '@terkelg', ['#ff0000', '#0000ff'] ]);
-
 (async () => {
   const response = await prompts([
     {
@@ -194,10 +177,8 @@ prompts.inject([ '@terkelg', ['#ff0000', '#0000ff'] ]);
       ],
     }
   ]);
-
   console.log(response); //{ twitter: '@terkelg', color: [ '#ff0000', '#0000ff' ] }
 })();
-
 ```
 
 ### picocolors
